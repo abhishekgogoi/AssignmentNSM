@@ -1,0 +1,127 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "phase": "İŞLEM DOSYALARI / TRANSACTION",
+      "subPhase": "4 Sub Phase",
+      "status": "Continuing",
+      "statusColor": "bg-yellow-400",
+      "document": "V6",
+      "hasBlueIndicator": true,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "11.12.2022"
+    },
+    {
+      "id": 2,
+      "phase": "Aşama / Phase",
+      "subPhase": "2 Sub Phase",
+      "status": "Completed",
+      "statusColor": "bg-emerald-500",
+      "document": "-",
+      "hasBlueIndicator": false,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "20.12.2022",
+      "subTransactions": [
+        {
+          "id": "2.1",
+          "phase": "Aşama / Phase",
+          "subPhase": "1 Sub Phase",
+          "status": "Completed",
+          "statusColor": "bg-emerald-500",
+          "document": "-",
+          "hasBlueIndicator": false,
+          "responsible": "Goksu Safi Işık Avukatlık...",
+          "date": "30.12.2022"
+        },
+        {
+          "id": "2.2",
+          "phase": "Aşama / Phase",
+          "subPhase": "1 Sub Phase",
+          "status": "Completed",
+          "statusColor": "bg-emerald-500",
+          "document": "V1.2",
+          "hasBlueIndicator": false,
+          "responsible": "Goksu Safi Işık Avukatlık...",
+          "date": "30.12.2022"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "phase": "Aşama / Phase",
+      "subPhase": "5 Sub Phase",
+      "status": "Not Started",
+      "statusColor": "bg-red-500",
+      "document": "V6",
+      "hasBlueIndicator": true,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "20.12.2022"
+    },
+    {
+      "id": 4,
+      "phase": "Aşama / Phase",
+      "subPhase": "4 Sub Phase",
+      "status": "Not Started",
+      "statusColor": "bg-red-500",
+      "document": "-",
+      "hasBlueIndicator": false,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "01.01.2025"
+    },
+    {
+      "id": 5,
+      "phase": "Aşama / Phase",
+      "subPhase": "1 Sub Phase",
+      "status": "Not Started",
+      "statusColor": "bg-red-500",
+      "document": "-",
+      "hasBlueIndicator": false,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "01.01.2025"
+    },
+    {
+      "id": 6,
+      "phase": "Aşama / Phase",
+      "subPhase": "5 Sub Phase",
+      "status": "Continuing",
+      "statusColor": "bg-yellow-400",
+      "document": "V1",
+      "hasBlueIndicator": true,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "11.12.2022"
+    },
+    {
+      "id": 7,
+      "phase": "Aşama / Phase",
+      "subPhase": "4 Sub Phase",
+      "status": "Not Started",
+      "statusColor": "bg-red-500",
+      "document": "-",
+      "hasBlueIndicator": false,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "25.12.2022"
+    },
+    {
+      "id": 8,
+      "phase": "Aşama / Phase",
+      "subPhase": "1 Sub Phase",
+      "status": "Undefined",
+      "statusColor": "bg-gray-500",
+      "document": "-",
+      "hasBlueIndicator": false,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "30.12.2022"
+    },
+    {
+      "id": 9,
+      "phase": "Aşama / Phase",
+      "subPhase": "5 Sub Phase",
+      "status": "Continuing",
+      "statusColor": "bg-yellow-400",
+      "document": "V1",
+      "hasBlueIndicator": false,
+      "responsible": "Goksu Safi Işık Avukatlık...",
+      "date": "25.12.2022"
+    }
+  ]
+}

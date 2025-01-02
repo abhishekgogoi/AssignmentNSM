@@ -1,21 +1,19 @@
-import { useState } from "react";
 import Group from "../assets/Group 193552.svg";
 import HouseSolid from "../assets/house-solid.svg";
 import ChevronRight from "../assets/chevron-right.svg";
+import { useSlidingBar } from "../context/SlidingBarContext";
 
-const Header = ({ onGroupClick }) => {
-  const [isRotated, setIsRotated] = useState(false); // Add this state
-
-  const handleClick = () => {
-    setIsRotated((prev) => !prev);
-    onGroupClick();
-  };
+const Header = () => {
+  const { isRotated, toggleSlidingBar } = useSlidingBar();
 
   return (
     <div className="bg-white p-4 shadow-sm">
       <div className="flex items-center text-sm text-gray-600">
         <span>
-          <button onClick={handleClick} className="mr-2 focus:outline-none">
+          <button
+            onClick={toggleSlidingBar}
+            className="mr-2 focus:outline-none"
+          >
             <img
               src={Group}
               alt="Group"

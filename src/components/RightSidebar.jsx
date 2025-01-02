@@ -30,7 +30,7 @@ const RightSidebar = () => {
   ];
 
   return (
-    <div className="w-16 bg-white border-l flex flex-col items-center py-4">
+    <div className="w-16 bg-white border-l flex flex-col items-center py-2">
       {actions.map((action, index) => (
         <div key={index}>
           <div

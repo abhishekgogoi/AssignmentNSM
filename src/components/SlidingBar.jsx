@@ -1,36 +1,16 @@
-import { useState } from "react";
 import Folder from "../assets/folder.svg";
 import CaretDown from "../assets/caret-down.svg";
 import FilterBars from "../assets/filter-bars.svg";
 import Exclamation from "../assets/exclamation-circle-solid.svg";
 import Word from "../assets/word.svg";
 import Plus from "../assets/plus-circle-solid.svg";
+import stagesData from "../data/stages.json";
+import { useTransaction } from "../context/TransactionContext";
 
 const SlidingBar = ({ isOpen }) => {
-  const [expandedStage, setExpandedStage] = useState(null);
+  const { expandedStage, handleStageClick } = useTransaction();
 
-  const stages = [
-    { id: 1, name: "Stage 1" },
-    {
-      id: 2,
-      name: "Stage 2",
-      substages: [
-        { id: 2.1, name: "2.1 Stage", type: "folder" },
-        { id: 2.2, name: "2.2 Stage", type: "word" },
-      ],
-    },
-    { id: 3, name: "Stage 3" },
-    { id: 4, name: "Stage 4" },
-    { id: 5, name: "Stage 5" },
-    { id: 6, name: "Stage 6" },
-    { id: 7, name: "Stage 7" },
-    { id: 8, name: "Stage 8" },
-    { id: 9, name: "Stage 9" },
-  ];
-
-  const handleStageClick = (stageId) => {
-    setExpandedStage(expandedStage === stageId ? null : stageId);
-  };
+  const { stages, stats } = stagesData;
 
   return (
     <div
@@ -45,15 +25,15 @@ const SlidingBar = ({ isOpen }) => {
         </div>
         <div className="flex items-center mt-3 space-x-4">
           <div>
-            <span className="text-sm font-medium">12</span>
+            <span className="text-sm font-medium">{stats.stages}</span>
             <p className="text-xs text-gray-500">Stage</p>
           </div>
           <div className="border-l pl-4">
-            <span className="text-sm font-medium">23</span>
+            <span className="text-sm font-medium">{stats.subfolders}</span>
             <p className="text-xs text-gray-500">Subfolder</p>
           </div>
           <div className="border-l pl-4">
-            <span className="text-sm font-medium">1235</span>
+            <span className="text-sm font-medium">{stats.documents}</span>
             <p className="text-xs text-gray-500">Document</p>
           </div>
           <div className="border-l pl-4">
