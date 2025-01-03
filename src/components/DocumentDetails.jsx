@@ -1,5 +1,4 @@
 import Word from "../assets/word.svg";
-import NoteSticky from "../assets/note-sticky-3.svg";
 import Ellipsis from "../assets/ellipsis.svg";
 import Cross from "../assets/xmark-bold.svg";
 import Profile from "../assets/user-circle.svg";
@@ -26,6 +25,7 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
 
   return (
     <div
+      data-testid="document-details-modal"
       className={`fixed top-0 right-0 h-screen w-[45rem] bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}

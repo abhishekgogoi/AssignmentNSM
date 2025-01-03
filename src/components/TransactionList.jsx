@@ -92,6 +92,7 @@ const TransactionList = () => {
                 <Search size={18} />
               </div>
               <input
+                data-testid="search-input"
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -112,6 +113,7 @@ const TransactionList = () => {
         <div className="flex items-center gap-3 min-w-fit">
           <div className="relative bg-white rounded-lg shadow">
             <select
+              data-testid="status-select"
               className="appearance-none h-10 pl-4 pr-10 w-48 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
               defaultValue="All Status"
             >
@@ -131,6 +133,7 @@ const TransactionList = () => {
           </button>
 
           <button
+            data-testid="filter-button"
             className="h-10 w-10 flex-shrink-0 flex items-center justify-center hover:bg-gray-100 rounded-lg"
             onClick={() => setIsFilterModalOpen(true)}
           >
@@ -173,7 +176,11 @@ const TransactionList = () => {
       <div className="flex-1 pb-4 space-y-2">
         {searchedTransactions.length > 0 ? (
           searchedTransactions.map((item) => (
-            <div key={item.id} className="bg-white rounded-lg shadow">
+            <div
+              key={item.id}
+              data-testid={`transaction-${item.id}`}
+              className="bg-white rounded-lg shadow"
+            >
               <div
                 className={`grid grid-cols-6 px-6 py-4 text-sm relative ${
                   item.hasBlueIndicator
@@ -183,6 +190,7 @@ const TransactionList = () => {
               >
                 <div className="flex items-center gap-3">
                   <button
+                    data-testid={`expand-button-${item.id}`}
                     className="p-1 hover:bg-gray-100 rounded"
                     onClick={() => toggleTransaction(item.id)}
                   >
@@ -220,6 +228,7 @@ const TransactionList = () => {
                   {item.document !== "-" ? (
                     <>
                       <button
+                        data-testid={`document-button-${item.id}`}
                         onClick={() => handleDocumentClick(item.status)}
                         className="flex items-center gap-2 hover:bg-gray-50 p-1 rounded"
                       >

@@ -2,9 +2,15 @@ import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import CalendarDays2 from "../assets/calender-days-2.svg";
 
-const QuickSelectOption = ({ label, onClick, isActive }) => (
+const QuickSelectOption = ({
+  label,
+  onClick,
+  isActive,
+  "data-testid": testId,
+}) => (
   <button
     onClick={onClick}
+    data-testid={testId}
     className={`w-full text-left px-4 py-2 text-sm ${
       isActive ? "bg-blue-50 text-blue-600" : "hover:bg-gray-50"
     }`}
@@ -54,6 +60,9 @@ const Calendar = ({
       {days.map((date, index) => (
         <div
           key={index}
+          data-testid={
+            date ? `date-cell-${date.getDate()}` : `empty-cell-${index}`
+          }
           className={`h-8 flex items-center justify-center ${
             !date ? "" : "cursor-pointer"
           }`}
@@ -244,10 +253,16 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
           placeholder="dd.mm.yyyy - dd.mm.yyyy"
           onClick={() => setIsOpen(true)}
           readOnly
+          data-testid="date-range-input"
           className="w-full px-4 py-2 text-gray-500 bg-white border border-gray-200 rounded focus:outline-none placeholder:text-gray-500"
         />
         <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-          <img src={CalendarDays2} alt="Calendar" className="w-5 h-5" />
+          <img
+            src={CalendarDays2}
+            alt="Calendar"
+            className="w-5 h-5"
+            data-testid="calendar-icon"
+          />
         </div>
       </div>
 
@@ -257,7 +272,12 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
             {/* Quick Select Column */}
             <div className="w-48 border-r border-gray-200">
               <div className="py-2 px-4 bg-gray-50 border-b border-gray-200">
-                <span className="text-sm font-medium">Custom</span>
+                <span
+                  data-testid="custom-range-text"
+                  className="text-sm font-medium"
+                >
+                  Custom
+                </span>
               </div>
               <div className="py-2">
                 {quickSelectOptions.map((option) => (
@@ -266,6 +286,9 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
                     label={option.label}
                     onClick={() => handleQuickSelect(option.days)}
                     isActive={false}
+                    data-testid={`quick-option-${option.label
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
                   />
                 ))}
               </div>
@@ -278,12 +301,16 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <button
+                      data-testid="previous-month-button"
                       onClick={() => moveMonth("left")}
                       className="p-1 hover:bg-gray-100 rounded"
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
-                    <span className="text-sm font-medium">
+                    <span
+                      data-testid="left-calendar-header"
+                      className="text-sm font-medium"
+                    >
                       {monthNames[leftMonth]} {leftYear}
                     </span>
                   </div>
@@ -299,10 +326,14 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
                 {/* Right Calendar */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium">
+                    <span
+                      data-testid="right-calendar-header"
+                      className="text-sm font-medium"
+                    >
                       {monthNames[rightMonth]} {rightYear}
                     </span>
                     <button
+                      data-testid="next-month-button"
                       onClick={() => moveMonth("right")}
                       className="p-1 hover:bg-gray-100 rounded"
                     >

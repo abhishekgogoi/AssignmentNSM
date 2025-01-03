@@ -17,6 +17,7 @@ const SlidingBar = ({ isOpen }) => {
 
   return (
     <div
+      data-testid="sliding-bar"
       className={`h-full w-80 bg-white shadow-lg transition-all duration-300 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
@@ -29,6 +30,7 @@ const SlidingBar = ({ isOpen }) => {
         <h2 className="text-lg font-semibold">Transaction Contents</h2>
         {isOpen && (
           <button
+            data-testid="sliding-bar-toggle"
             onClick={toggleSlidingBar}
             className="absolute right-4 top-5 focus:outline-none p-2 hover:bg-white hover:shadow-[0_2px_8px_rgba(0,0,0,0.15)] rounded transition-all duration-200"
           >
