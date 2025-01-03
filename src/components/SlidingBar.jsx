@@ -6,9 +6,12 @@ import Word from "../assets/word.svg";
 import Plus from "../assets/plus-circle-solid.svg";
 import stagesData from "../data/stages.json";
 import { useTransaction } from "../context/TransactionContext";
+import { useSlidingBar } from "../context/SlidingBarContext";
+import Group from "../assets/Group 193552.svg";
 
 const SlidingBar = ({ isOpen }) => {
   const { expandedStage, handleStageClick } = useTransaction();
+  const { isRotated, toggleSlidingBar } = useSlidingBar();
 
   const { stages, stats } = stagesData;
 
@@ -20,10 +23,23 @@ const SlidingBar = ({ isOpen }) => {
     >
       {/* Header Section */}
       <div
-        className="flex items-center pl-4 h-[4.3rem]"
+        className="flex items-center pl-4 h-[4.3rem] relative"
         style={{ backgroundColor: "#fbfcfe" }}
       >
         <h2 className="text-lg font-semibold">Transaction Contents</h2>
+        {isOpen && (
+          <button
+            onClick={toggleSlidingBar}
+            className="absolute right-4 top-5 focus:outline-none p-2 hover:bg-white hover:shadow-[0_2px_8px_rgba(0,0,0,0.15)] rounded transition-all duration-200"
+          >
+            <img
+              src={Group}
+              alt="Group"
+              className="transform transition-transform duration-300"
+              style={{ transform: isRotated ? "rotate(180deg)" : "rotate(0)" }}
+            />
+          </button>
+        )}
       </div>
       <div className="px-4 py-3 border-b">
         <div className="flex items-center space-x-4">
@@ -76,7 +92,7 @@ const SlidingBar = ({ isOpen }) => {
                     }`}
                 />
               </button>
-              <img src={Folder} alt="Folder" className="w-4 h-4 mr-2" />
+              <img src={Folder} alt="Folder" className="w-6 h-6 mr-2" />
               <span className="text-sm">{stage.name}</span>
               <img
                 src={Exclamation}

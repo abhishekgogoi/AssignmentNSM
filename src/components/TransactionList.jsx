@@ -48,7 +48,7 @@ const TransactionList = () => {
   const isDateInRange = (date, range) => {
     if (!range || !range.startDate || !range.endDate) return true;
 
-    const transactionDate = new Date(date.split(".").reverse().join("-")); // Convert "dd.mm.yyyy" to Date
+    const transactionDate = new Date(date.split(".").reverse().join("-"));
     return (
       transactionDate >= range.startDate && transactionDate <= range.endDate
     );
@@ -71,11 +71,9 @@ const TransactionList = () => {
       );
 
   return (
-    // <div className="flex-1 flex flex-col p-4 bg-gray-50">
     <div className="space-y-2">
       {/* Search and filters */}
       <div className="flex items-center justify-between gap-8">
-        {/* Left section - Folder dropdown and search in single unified bar */}
         <div className="bg-white rounded-lg shadow flex items-stretch h-10">
           <div className="px-3 flex items-center">
             <img src={Folder} alt="Folder" className="w-4 h-4 mr-2" />
@@ -85,12 +83,10 @@ const TransactionList = () => {
             <img src={ChevronDown} className="w-3 h-3 ml-2" alt="dropdown" />
           </div>
 
-          {/* Full height divider */}
           <div className="w-px bg-gray-200"></div>
 
           <div className="flex items-center pl-3 w-[32rem]">
             {" "}
-            {/* Fixed width for search section */}
             <div className="relative w-full">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                 <Search size={18} />
@@ -113,8 +109,7 @@ const TransactionList = () => {
           </div>
         </div>
 
-        {/* Right section - Status, Download, Filter */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 min-w-fit">
           <div className="relative bg-white rounded-lg shadow">
             <select
               className="appearance-none h-10 pl-4 pr-10 w-48 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
@@ -131,14 +126,12 @@ const TransactionList = () => {
             </div>
           </div>
 
-          {/* Download button in its own container */}
-          <button className="h-10 px-3 bg-white shadow border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-50">
+          <button className="h-10 w-10 flex-shrink-0 bg-white shadow border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-50">
             <img src={Download} alt="Download" className="w-5 h-5" />
           </button>
 
-          {/* Filter button without background */}
           <button
-            className="h-10 px-3 flex items-center justify-center hover:bg-gray-100 rounded-lg"
+            className="h-10 w-10 flex-shrink-0 flex items-center justify-center hover:bg-gray-100 rounded-lg"
             onClick={() => setIsFilterModalOpen(true)}
           >
             <img src={Filter} alt="Filter" className="w-5 h-5" />
@@ -146,13 +139,12 @@ const TransactionList = () => {
         </div>
       </div>
 
-      {/* Table Header */}
       <div className="grid grid-cols-6 px-6 py-3 font-semibold text-base">
         <div className="flex items-center gap-1 text-gray-600">
           <span>#</span>
         </div>
 
-        <div className="flex items-center gap-1 text-black -ml-[10rem]">
+        <div className="flex items-center gap-1 text-black">
           <span>Phase</span>
           <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
@@ -167,7 +159,7 @@ const TransactionList = () => {
           <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
 
-        <div className="flex items-center gap-1 text-black">
+        <div className="flex items-center gap-1 text-black -ml-12">
           <span>Responsible Party</span>
           <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
@@ -178,7 +170,6 @@ const TransactionList = () => {
         </div>
       </div>
 
-      {/* Table Content */}
       <div className="flex-1 pb-4 space-y-2">
         {searchedTransactions.length > 0 ? (
           searchedTransactions.map((item) => (
@@ -209,8 +200,10 @@ const TransactionList = () => {
                 </div>
 
                 <div>
-                  <div className="text-gray-700 -ml-[10rem]">{item.phase}</div>
-                  <div className="text-gray-500 text-xs mt-1 -ml-[10rem]">
+                  <div className="text-gray-700 mr-10 truncate max-w-[200px]">
+                    {item.phase}
+                  </div>
+                  <div className="text-gray-500 text-xs mt-1 mr-10 truncate max-w-[200px]">
                     {item.subPhase}
                   </div>
                 </div>
@@ -247,7 +240,7 @@ const TransactionList = () => {
 
                 <div className="flex items-center gap-2">
                   <span
-                    className="text-gray-700 px-2 py-1 rounded"
+                    className="text-gray-700 px-2 py-1 rounded truncate -ml-12"
                     style={{ backgroundColor: "#f0f4f9" }}
                   >
                     {item.responsible}
@@ -264,7 +257,6 @@ const TransactionList = () => {
                 </div>
               </div>
 
-              {/* Sub-transactions */}
               {expandedTransactions.has(item.id) &&
                 item.subTransactions?.map((subItem) => (
                   <div
@@ -283,10 +275,10 @@ const TransactionList = () => {
                     </div>
 
                     <div>
-                      <div className="text-gray-700 -ml-[10rem]">
+                      <div className="text-gray-700 mr-10 truncate max-w-[200px]">
                         {subItem.phase}
                       </div>
-                      <div className="text-gray-500 text-xs mt-1 -ml-[10rem]">
+                      <div className="text-gray-500 text-xs mt-1 mr-10 truncate max-w-[200px]">
                         {subItem.subPhase}
                       </div>
                     </div>
@@ -322,7 +314,7 @@ const TransactionList = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-700 bg-gray-50 px-2 py-1 rounded">
+                      <span className="text-gray-700 bg-gray-50 px-2 py-1 rounded truncate -ml-12">
                         {subItem.responsible}
                       </span>
                     </div>
@@ -345,7 +337,6 @@ const TransactionList = () => {
           </div>
         )}
       </div>
-      {/* </div> */}
 
       <DocumentDetails
         isOpen={isDocumentDetailsOpen}

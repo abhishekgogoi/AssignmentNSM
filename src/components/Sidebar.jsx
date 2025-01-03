@@ -58,7 +58,7 @@ const Sidebar = () => {
       <div className="mt-auto">
         <div
           className="p-3 w-full flex flex-col items-center cursor-pointer hover:bg-blue-800"
-          style={{ marginTop: "10rem" }}
+          style={{ marginBottom: "1rem" }}
         >
           <span>
             <img src={UserCircle} alt="User Profile" className="svg-icon" />
