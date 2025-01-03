@@ -13,6 +13,7 @@ import Group1 from "../assets/Group 193548.svg";
 import ChevronRight from "../assets/chevron-right.svg";
 import transactionsData from "../data/transactions.json";
 import { useTransaction } from "../context/TransactionContext";
+import "../App.css";
 
 const TransactionList = () => {
   const { expandedTransactions, toggleTransaction } = useTransaction();
@@ -146,34 +147,34 @@ const TransactionList = () => {
       </div>
 
       {/* Table Header */}
-      <div className="grid grid-cols-6 px-6 py-3 font-semibold text-sm">
+      <div className="grid grid-cols-6 px-6 py-3 font-semibold text-base">
         <div className="flex items-center gap-1 text-gray-600">
           <span>#</span>
         </div>
 
-        <div className="flex items-center gap-1 text-gray-600">
+        <div className="flex items-center gap-1 text-black -ml-[10rem]">
           <span>Phase</span>
-          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+          <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
 
-        <div className="flex items-center gap-1 text-gray-600">
+        <div className="flex items-center gap-1 text-black">
           <span>Status</span>
-          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+          <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
 
-        <div className="flex items-center gap-1 text-gray-600">
+        <div className="flex items-center gap-1 text-black">
           <span>Document</span>
-          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+          <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
 
-        <div className="flex items-center gap-1 text-gray-600">
+        <div className="flex items-center gap-1 text-black">
           <span>Responsible Party</span>
-          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+          <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
 
-        <div className="flex items-center gap-1 text-gray-600">
+        <div className="flex items-center gap-1 text-black">
           <span>Update Date</span>
-          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+          <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
       </div>
 
@@ -208,8 +209,8 @@ const TransactionList = () => {
                 </div>
 
                 <div>
-                  <div className="text-gray-700">{item.phase}</div>
-                  <div className="text-gray-500 text-xs mt-1">
+                  <div className="text-gray-700 -ml-[10rem]">{item.phase}</div>
+                  <div className="text-gray-500 text-xs mt-1 -ml-[10rem]">
                     {item.subPhase}
                   </div>
                 </div>
@@ -229,8 +230,14 @@ const TransactionList = () => {
                         onClick={() => handleDocumentClick(item.status)}
                         className="flex items-center gap-2 hover:bg-gray-50 p-1 rounded"
                       >
-                        <img src={Group1} alt="document" className="w-4 h-4" />
-                        <span className="text-gray-700">{item.document}</span>
+                        <img
+                          src={Group1}
+                          alt="document"
+                          className="w-6 h-6 group1-custom-color"
+                        />
+                        <span style={{ color: "#226fea" }}>
+                          {item.document}
+                        </span>
                       </button>
                     </>
                   ) : (
@@ -239,14 +246,21 @@ const TransactionList = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-gray-700 bg-gray-50 px-2 py-1 rounded">
+                  <span
+                    className="text-gray-700 px-2 py-1 rounded"
+                    style={{ backgroundColor: "#f0f4f9" }}
+                  >
                     {item.responsible}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
+                  <img
+                    src={Group}
+                    alt="calendar"
+                    className="w-8 h-8 group-custom-color"
+                  />
                   <span className="text-gray-700">{item.date}</span>
-                  <img src={Group} alt="calendar" className="w-4 h-4" />
                 </div>
               </div>
 
@@ -269,8 +283,10 @@ const TransactionList = () => {
                     </div>
 
                     <div>
-                      <div className="text-gray-700">{subItem.phase}</div>
-                      <div className="text-gray-500 text-xs mt-1">
+                      <div className="text-gray-700 -ml-[10rem]">
+                        {subItem.phase}
+                      </div>
+                      <div className="text-gray-500 text-xs mt-1 -ml-[10rem]">
                         {subItem.subPhase}
                       </div>
                     </div>
@@ -293,9 +309,9 @@ const TransactionList = () => {
                             <img
                               src={Group1}
                               alt="document"
-                              className="w-4 h-4"
+                              className="w-6 h-6 group1-custom-color"
                             />
-                            <span className="text-gray-700">
+                            <span style={{ color: "#226fea" }}>
                               {subItem.document}
                             </span>
                           </button>
@@ -312,8 +328,12 @@ const TransactionList = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
+                      <img
+                        src={Group}
+                        alt="calendar"
+                        className="w-8 h-8 group-custom-color"
+                      />
                       <span className="text-gray-700">{subItem.date}</span>
-                      <img src={Group} alt="calendar" className="w-4 h-4" />
                     </div>
                   </div>
                 ))}

@@ -19,21 +19,24 @@ const SlidingBar = ({ isOpen }) => {
       }`}
     >
       {/* Header Section */}
+      <div
+        className="flex items-center pl-4 h-[4.3rem]"
+        style={{ backgroundColor: "#fbfcfe" }}
+      >
+        <h2 className="text-lg font-semibold">Transaction Contents</h2>
+      </div>
       <div className="px-4 py-3 border-b">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base font-semibold">Transaction Contents</h2>
-        </div>
-        <div className="flex items-center mt-3 space-x-4">
+        <div className="flex items-center space-x-4">
           <div>
-            <span className="text-sm font-medium">{stats.stages}</span>
+            <span className="text-lg font-medium">{stats.stages}</span>
             <p className="text-xs text-gray-500">Stage</p>
           </div>
           <div className="border-l pl-4">
-            <span className="text-sm font-medium">{stats.subfolders}</span>
+            <span className="text-lg font-medium">{stats.subfolders}</span>
             <p className="text-xs text-gray-500">Subfolder</p>
           </div>
           <div className="border-l pl-4">
-            <span className="text-sm font-medium">{stats.documents}</span>
+            <span className="text-lg font-medium">{stats.documents}</span>
             <p className="text-xs text-gray-500">Document</p>
           </div>
           <div className="border-l pl-4">

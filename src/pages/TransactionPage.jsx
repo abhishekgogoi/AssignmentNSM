@@ -36,7 +36,10 @@ const TransactionPage = () => {
           <Header />
         </div>
 
-        <div className="flex flex-1 flex-row overflow-auto bg-gray-500 px-6 py-6 gap-4">
+        <div
+          className="flex flex-1 flex-row overflow-auto px-6 py-6 gap-4"
+          style={{ backgroundColor: "#f2f6fa" }}
+        >
           <div className="flex-1">
             <TransactionList />
           </div>

@@ -45,3 +45,13 @@
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
     contrast(100%);
 }
+
+.group1-custom-color {
+  filter: invert(35%) sepia(64%) saturate(4776%) hue-rotate(224deg)
+    brightness(91%) contrast(91%);
+}
+
+.group-custom-color {
+  filter: invert(94%) sepia(7%) saturate(300%) hue-rotate(210deg)
+    brightness(105%) contrast(92%);
+}
