@@ -7,7 +7,7 @@ const Header = () => {
   const { isRotated, toggleSlidingBar } = useSlidingBar();
 
   return (
-    <div className="bg-white p-4 shadow-sm">
+    <div className="bg-white px-4 py-6 shadow-sm">
       <div className="flex items-center text-sm text-gray-600">
         <span>
           <button
@@ -23,7 +23,7 @@ const Header = () => {
           </button>
         </span>
         <span className="mx-2">
-          <img src={HouseSolid} alt="HouseSolid" />
+          <img src={HouseSolid} alt="HouseSolid" className="w-4 h-4" />
         </span>
         <span>
           <img src={ChevronRight} alt="ChevronRight" />

@@ -7,24 +7,43 @@ import File from "../assets/file.svg";
 import Sliders from "../assets/sliders.svg";
 import Calendar from "../assets/calender-days-2.svg";
 import UserCircle from "../assets/user-circle.svg";
+import "../App.css";
 
 const Sidebar = () => {
   const menuItems = [
     { icon: <img src={MuamelatLogo} alt="MuamelatLogo" />, label: "Muamelat" },
-    { icon: <img src={Chart} alt="Chart" />, label: "Panorama" },
-    { icon: <img src={FileLines} alt="FileLines" />, label: "Muamele" },
-    { icon: <img src={Folder3} alt="Folder3" />, label: "Documents" },
-    { icon: <img src={Envelope} alt="Envelope" />, label: "E-Mails" },
-    { icon: <img src={File} alt="File" />, label: "Reports" },
-    { icon: <img src={Sliders} alt="Sliders" />, label: "Management Panel" },
     {
-      icon: <img src={Calendar} alt="Calendar" />,
+      icon: <img src={Chart} alt="Chart" className="svg-icon" />,
+      label: "Panorama",
+    },
+    {
+      icon: <img src={FileLines} alt="FileLines" className="svg-icon" />,
+      label: "Muamele",
+    },
+    {
+      icon: <img src={Folder3} alt="Folder3" className="svg-icon" />,
+      label: "Documents",
+    },
+    {
+      icon: <img src={Envelope} alt="Envelope" className="svg-icon" />,
+      label: "E-Mails",
+    },
+    {
+      icon: <img src={File} alt="File" className="svg-icon" />,
+      label: "Reports",
+    },
+    {
+      icon: <img src={Sliders} alt="Sliders" className="svg-icon" />,
+      label: "Management Panel",
+    },
+    {
+      icon: <img src={Calendar} alt="Calendar" className="svg-icon" />,
       label: "Transaction Calendar",
     },
   ];
 
   return (
-    <div className="w-20 bg-blue-900 text-white flex flex-col items-center py-4">
+    <div className="w-20 bg-blue-900 text-white flex flex-col items-center">
       {menuItems.map((item, index) => (
         <div
           key={index}
@@ -42,7 +61,7 @@ const Sidebar = () => {
           style={{ marginTop: "10rem" }}
         >
           <span>
-            <img src={UserCircle} alt="User Profile" />
+            <img src={UserCircle} alt="User Profile" className="svg-icon" />
           </span>
         </div>
       </div>

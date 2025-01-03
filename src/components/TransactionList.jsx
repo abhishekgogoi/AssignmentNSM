@@ -70,114 +70,115 @@ const TransactionList = () => {
       );
 
   return (
-    <div className="flex-1 p-4 bg-gray-50">
-      <div className="space-y-2">
-        {/* Search and filters */}
-        <div className="flex items-center justify-between gap-8">
-          {/* Left section - Folder dropdown and search in single unified bar */}
-          <div className="bg-white rounded-lg shadow flex items-stretch h-10">
-            <div className="px-3 flex items-center">
-              <img src={Folder} alt="Folder" className="w-4 h-4 mr-2" />
-              <select className="appearance-none bg-transparent border-none outline-none w-40">
-                <option>All (selected folder)</option>
-              </select>
-              <img src={ChevronDown} className="w-3 h-3 ml-2" alt="dropdown" />
-            </div>
-
-            {/* Full height divider */}
-            <div className="w-px bg-gray-200"></div>
-
-            <div className="flex items-center pl-3 w-[32rem]">
-              {" "}
-              {/* Fixed width for search section */}
-              <div className="relative w-full">
-                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                  <Search size={18} />
-                </div>
-                <input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search within all folders and content, or a specific folder's content"
-                  className="w-full bg-transparent border-none outline-none pl-10 pr-10 text-sm placeholder-gray-500"
-                />
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  <img
-                    src={Microphone}
-                    alt="Voice Search"
-                    className="w-4 h-4 text-gray-400 cursor-pointer"
-                  />
-                </div>
-              </div>
-            </div>
+    // <div className="flex-1 flex flex-col p-4 bg-gray-50">
+    <div className="space-y-2">
+      {/* Search and filters */}
+      <div className="flex items-center justify-between gap-8">
+        {/* Left section - Folder dropdown and search in single unified bar */}
+        <div className="bg-white rounded-lg shadow flex items-stretch h-10">
+          <div className="px-3 flex items-center">
+            <img src={Folder} alt="Folder" className="w-4 h-4 mr-2" />
+            <select className="appearance-none bg-transparent border-none outline-none w-40">
+              <option>All (selected folder)</option>
+            </select>
+            <img src={ChevronDown} className="w-3 h-3 ml-2" alt="dropdown" />
           </div>
 
-          {/* Right section - Status, Download, Filter */}
-          <div className="flex items-center gap-3">
-            <div className="relative bg-white rounded-lg shadow">
-              <select
-                className="appearance-none h-10 pl-4 pr-10 w-48 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-                defaultValue="All Status"
-              >
-                <option>All Status</option>
-              </select>
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none bg-white rounded-full">
+          {/* Full height divider */}
+          <div className="w-px bg-gray-200"></div>
+
+          <div className="flex items-center pl-3 w-[32rem]">
+            {" "}
+            {/* Fixed width for search section */}
+            <div className="relative w-full">
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <Search size={18} />
+              </div>
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search within all folders and content, or a specific folder's content"
+                className="w-full bg-transparent border-none outline-none pl-10 pr-10 text-sm placeholder-gray-500"
+              />
+              <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
                 <img
-                  src={ChevronDown}
-                  alt="Select"
-                  className="w-4 h-4 text-gray-500"
+                  src={Microphone}
+                  alt="Voice Search"
+                  className="w-4 h-4 text-gray-400 cursor-pointer"
                 />
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Download button in its own container */}
-            <button className="h-10 px-3 bg-white shadow border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-50">
-              <img src={Download} alt="Download" className="w-5 h-5" />
-            </button>
-
-            {/* Filter button without background */}
-            <button
-              className="h-10 px-3 flex items-center justify-center hover:bg-gray-100 rounded-lg"
-              onClick={() => setIsFilterModalOpen(true)}
+        {/* Right section - Status, Download, Filter */}
+        <div className="flex items-center gap-3">
+          <div className="relative bg-white rounded-lg shadow">
+            <select
+              className="appearance-none h-10 pl-4 pr-10 w-48 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              defaultValue="All Status"
             >
-              <img src={Filter} alt="Filter" className="w-5 h-5" />
-            </button>
+              <option>All Status</option>
+            </select>
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none bg-white rounded-full">
+              <img
+                src={ChevronDown}
+                alt="Select"
+                className="w-4 h-4 text-gray-500"
+              />
+            </div>
           </div>
+
+          {/* Download button in its own container */}
+          <button className="h-10 px-3 bg-white shadow border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-50">
+            <img src={Download} alt="Download" className="w-5 h-5" />
+          </button>
+
+          {/* Filter button without background */}
+          <button
+            className="h-10 px-3 flex items-center justify-center hover:bg-gray-100 rounded-lg"
+            onClick={() => setIsFilterModalOpen(true)}
+          >
+            <img src={Filter} alt="Filter" className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Table Header */}
+      <div className="grid grid-cols-6 px-6 py-3 font-semibold text-sm">
+        <div className="flex items-center gap-1 text-gray-600">
+          <span>#</span>
         </div>
 
-        {/* Table Header */}
-        <div className="grid grid-cols-6 px-6 py-3 font-semibold text-sm">
-          <div className="flex items-center gap-1 text-gray-600">
-            <span>#</span>
-          </div>
-
-          <div className="flex items-center gap-1 text-gray-600">
-            <span>Phase</span>
-            <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
-          </div>
-
-          <div className="flex items-center gap-1 text-gray-600">
-            <span>Status</span>
-            <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
-          </div>
-
-          <div className="flex items-center gap-1 text-gray-600">
-            <span>Document</span>
-            <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
-          </div>
-
-          <div className="flex items-center gap-1 text-gray-600">
-            <span>Responsible Party</span>
-            <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
-          </div>
-
-          <div className="flex items-center gap-1 text-gray-600">
-            <span>Update Date</span>
-            <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
-          </div>
+        <div className="flex items-center gap-1 text-gray-600">
+          <span>Phase</span>
+          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
         </div>
 
-        {/* Table Content */}
+        <div className="flex items-center gap-1 text-gray-600">
+          <span>Status</span>
+          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+        </div>
+
+        <div className="flex items-center gap-1 text-gray-600">
+          <span>Document</span>
+          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+        </div>
+
+        <div className="flex items-center gap-1 text-gray-600">
+          <span>Responsible Party</span>
+          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+        </div>
+
+        <div className="flex items-center gap-1 text-gray-600">
+          <span>Update Date</span>
+          <img src={CaretDown} alt="Sort" className="w-4 h-4 opacity-50" />
+        </div>
+      </div>
+
+      {/* Table Content */}
+      <div className="flex-1 pb-4 space-y-2">
         {searchedTransactions.length > 0 ? (
           searchedTransactions.map((item) => (
             <div key={item.id} className="bg-white rounded-lg shadow">
@@ -324,6 +325,7 @@ const TransactionList = () => {
           </div>
         )}
       </div>
+      {/* </div> */}
 
       <DocumentDetails
         isOpen={isDocumentDetailsOpen}

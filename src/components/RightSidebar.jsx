@@ -30,12 +30,12 @@ const RightSidebar = () => {
   ];
 
   return (
-    <div className="w-16 bg-white border-l flex flex-col items-center py-2">
+    <div className="w-16 bg-white border-l flex flex-col items-center pt-4 rounded-lg mt-4">
       {actions.map((action, index) => (
         <div key={index}>
           <div
             className={`p-2 cursor-pointer hover:bg-gray-100 rounded w-14 flex flex-col items-center ${
-              index !== actions.length - 1 ? "mb-4" : ""
+              index !== actions.length - 1 ? "mb-5" : ""
             }`}
           >
             <div className="w-5 h-5 flex items-center justify-center">
@@ -48,7 +48,7 @@ const RightSidebar = () => {
             )}
           </div>
           {action.hasSeparator && (
-            <div className="w-8 h-px bg-gray-200 my-4 mx-auto" />
+            <div className="w-8 h-px bg-gray-200 my-2 mx-auto" />
           )}
         </div>
       ))}

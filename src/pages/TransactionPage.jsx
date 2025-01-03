@@ -32,13 +32,17 @@ const TransactionPage = () => {
           isSlidingBarOpen ? "ml-[20rem]" : "ml-15"
         }`}
       >
-        <div className="h-16 bg-white border-b">
+        <div>
           <Header />
         </div>
 
-        <div className="flex overflow-auto bg-gray-50 px-6 py-4">
-          <TransactionList />
-          <RightSidebar />
+        <div className="flex flex-1 flex-row overflow-auto bg-gray-500 px-6 py-6 gap-4">
+          <div className="flex-1">
+            <TransactionList />
+          </div>
+          <div className="flex-shrink-0 -mt-4">
+            <RightSidebar />
+          </div>
         </div>
       </div>
     </div>
