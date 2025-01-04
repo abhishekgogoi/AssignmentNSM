@@ -28,6 +28,7 @@ const TransactionPage = () => {
       </div>
 
       <div
+        data-testid="main-content"
         className={`flex-1 flex flex-col transition-all duration-300 ${
           isSlidingBarOpen ? "ml-[20rem]" : "ml-15"
         }`}

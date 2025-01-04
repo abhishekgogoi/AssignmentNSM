@@ -219,4 +219,19 @@ describe("TransactionList", () => {
     const statusBadge = within(firstTransaction).getByText("Continuing");
     expect(statusBadge).toHaveClass("bg-yellow-400");
   });
+
+  test("opens document details when clicking on document button", () => {
+    render(<TransactionList />);
+
+    const documentButton = screen.getByTestId("document-button-1");
+
+    fireEvent.click(documentButton);
+
+    expect(screen.getByTestId("document-details-modal")).toBeInTheDocument();
+
+    const statusBadge = within(
+      screen.getByTestId("document-details-modal")
+    ).getByText("Continuing");
+    expect(statusBadge).toBeInTheDocument();
+  });
 });

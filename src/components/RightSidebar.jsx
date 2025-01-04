@@ -30,7 +30,10 @@ const RightSidebar = () => {
   ];
 
   return (
-    <div className="w-16 bg-white border-l flex flex-col items-center pt-4 rounded-lg mt-4">
+    <div
+      data-testid="right-sidebar"
+      className="w-16 bg-white border-l flex flex-col items-center pt-4 rounded-lg mt-4"
+    >
       {actions.map((action, index) => (
         <div key={index}>
           <div
