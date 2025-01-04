@@ -22,7 +22,6 @@ const SlidingBar = ({ isOpen }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      {/* Header Section */}
       <div
         className="flex items-center pl-4 h-[4.3rem] relative"
         style={{ backgroundColor: "#fbfcfe" }}
@@ -63,7 +62,6 @@ const SlidingBar = ({ isOpen }) => {
         </div>
       </div>
 
-      {/* Filter Section */}
       <div className="px-4 py-3 border-b border-gray-200">
         <div className="flex items-center justify-between text-sm text-gray-500">
           <span>Filter by Client/Matter name</span>
@@ -71,7 +69,6 @@ const SlidingBar = ({ isOpen }) => {
         </div>
       </div>
 
-      {/* Stages List */}
       <ul className="py-2">
         {stages.map((stage) => (
           <li
@@ -103,7 +100,6 @@ const SlidingBar = ({ isOpen }) => {
               />
             </div>
 
-            {/* Substages */}
             {expandedStage === stage.id && stage.substages && (
               <ul className="relative">
                 {stage.substages.map((substage) => (

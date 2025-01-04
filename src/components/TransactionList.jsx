@@ -72,7 +72,6 @@ const TransactionList = () => {
 
   return (
     <div className="space-y-2">
-      {/* Search and filters */}
       <div className="flex items-center justify-between gap-8">
         <div className="bg-white rounded-lg shadow flex items-stretch h-10">
           <div className="px-3 flex items-center">
@@ -234,7 +233,11 @@ const TransactionList = () => {
                         <img
                           src={Group1}
                           alt="document"
-                          className="w-6 h-6 group1-custom-color"
+                          className={`w-6 h-6 ${
+                            item.status === "Not Started"
+                              ? "group1-custom-color-1"
+                              : "group1-custom-color"
+                          }`}
                         />
                         <span style={{ color: "#226fea" }}>
                           {item.document}

@@ -9,7 +9,6 @@ export function TransactionProvider({ children }) {
   const handleStageClick = (stageId) => {
     setExpandedStage(expandedStage === stageId ? null : stageId);
 
-    // Sync with transactions - when stage is clicked, update transactions
     const newExpanded = new Set(expandedTransactions);
     if (expandedStage === stageId) {
       newExpanded.delete(stageId);
@@ -20,7 +19,6 @@ export function TransactionProvider({ children }) {
   };
 
   const toggleTransaction = (id) => {
-    // Only update transactions, don't sync with stages
     const newExpanded = new Set(expandedTransactions);
     if (newExpanded.has(id)) {
       newExpanded.delete(id);

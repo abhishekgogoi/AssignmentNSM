@@ -8,6 +8,12 @@
     brightness(91%) contrast(91%);
 }
 
+.group1-custom-color-1 {
+  filter: invert(35%) sepia(64%) saturate(4776%) hue-rotate(224deg)
+    brightness(91%) contrast(91%);
+  opacity: 0.3;
+}
+
 .group-custom-color {
   filter: invert(92%) sepia(7%) saturate(270%) hue-rotate(186deg)
     brightness(96%) contrast(89%);

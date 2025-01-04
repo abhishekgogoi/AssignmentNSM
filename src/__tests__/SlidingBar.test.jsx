@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import SlidingBar from "../components/SlidingBar";
 
-// Mock the SVG imports
 jest.mock("../assets/folder.svg", () => "folder-icon");
 jest.mock("../assets/caret-down.svg", () => "caret-icon");
 jest.mock("../assets/filter-bars.svg", () => "filter-bars-icon");
@@ -10,7 +9,6 @@ jest.mock("../assets/word.svg", () => "word-icon");
 jest.mock("../assets/plus-circle-solid.svg", () => "plus-icon");
 jest.mock("../assets/Group 193552.svg", () => "group-icon");
 
-// Mock the context hooks
 jest.mock("../context/TransactionContext.jsx", () => ({
   useTransaction: () => ({
     expandedStage: null,
@@ -25,7 +23,6 @@ jest.mock("../context/SlidingBarContext.jsx", () => ({
   }),
 }));
 
-// Mock the stages data
 jest.mock("../data/stages.json", () => ({
   stages: [
     {

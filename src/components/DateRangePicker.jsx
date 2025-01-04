@@ -148,12 +148,10 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
 
   const moveMonth = (direction) => {
     if (direction === "left") {
-      // Moving backwards
       setLeftMonth((prevLeftMonth) => {
         const newLeftMonth = prevLeftMonth === 0 ? 11 : prevLeftMonth - 1;
         const newLeftYear = prevLeftMonth === 0 ? leftYear - 1 : leftYear;
 
-        // Update right calendar based on new left values
         setRightMonth(newLeftMonth === 11 ? 0 : newLeftMonth + 1);
         setRightYear(newLeftMonth === 11 ? newLeftYear + 1 : newLeftYear);
         setLeftYear(newLeftYear);
@@ -161,12 +159,10 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
         return newLeftMonth;
       });
     } else {
-      // Moving forwards
       setLeftMonth((prevLeftMonth) => {
         const newLeftMonth = prevLeftMonth === 11 ? 0 : prevLeftMonth + 1;
         const newLeftYear = prevLeftMonth === 11 ? leftYear + 1 : leftYear;
 
-        // Update right calendar based on new left values
         setRightMonth(newLeftMonth === 11 ? 0 : newLeftMonth + 1);
         setRightYear(newLeftMonth === 11 ? newLeftYear + 1 : newLeftYear);
         setLeftYear(newLeftYear);
@@ -216,7 +212,6 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
 
   const handleQuickSelect = (days) => {
     if (days === null) {
-      // All Time selection
       setSelectedStartDate(null);
       setSelectedEndDate(null);
       setInputValue("All Time");
@@ -269,12 +264,11 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
       {isOpen && (
         <div className="absolute mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
           <div className="flex">
-            {/* Quick Select Column */}
             <div className="w-48 border-r border-gray-200">
-              <div className="py-2 px-4 bg-gray-50 border-b border-gray-200">
+              <div className="py-2 px-4 bg-[#1f94ff] border-b border-gray-200">
                 <span
                   data-testid="custom-range-text"
-                  className="text-sm font-medium"
+                  className="text-sm font-medium text-white"
                 >
                   Custom
                 </span>
@@ -294,10 +288,8 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
               </div>
             </div>
 
-            {/* Calendars */}
             <div className="p-4">
               <div className="flex space-x-8">
-                {/* Left Calendar */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <button
@@ -323,7 +315,6 @@ const DateRangePicker = ({ selectedRange, onDateRangeChange }) => {
                   />
                 </div>
 
-                {/* Right Calendar */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span
