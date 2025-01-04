@@ -4,6 +4,7 @@ import Cross from "../assets/xmark-bold.svg";
 import Profile from "../assets/user-circle.svg";
 import ChevronRight from "../assets/chevron-right.svg";
 import versionsData from "../data/document-versions.json";
+import NoteSticky from "../assets/note-sticky-3.svg";
 
 const DocumentDetails = ({ isOpen, onClose, status }) => {
   const getStatusColor = (status) => {
@@ -30,14 +31,15 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
-      {/* Main Container */}
       <div className="flex flex-col h-full">
-        {/* Header Section */}
         <div className="flex items-center justify-between px-6 py-4 border-b">
-          {/* Left side with title */}
           <div className="flex items-center gap-4">
             <div>
-              <img src={Word} alt="Word document" className="w-8 h-8" />
+              <img
+                src={Word}
+                alt="Word document"
+                className="w-8 h-8 word-icon"
+              />
             </div>
             <div>
               <div className="flex items-center gap-3">
@@ -59,7 +61,6 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
             </div>
           </div>
 
-          {/* Right side with icons */}
           <div className="flex items-center gap-6">
             <button className="p-1 hover:bg-gray-100 rounded">
               <img src={Ellipsis} alt="More options" className="w-5 h-5" />
@@ -70,9 +71,7 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
           </div>
         </div>
 
-        {/* Navigation Tabs */}
         <div className="flex items-center w-full">
-          {/* Left Arrow - Outside the navigation container */}
           <button className="p-2">
             <img
               src={ChevronRight}
@@ -81,7 +80,6 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
             />
           </button>
 
-          {/* Navigation Tabs Container with gray background */}
           <div className="flex-1 bg-gray-50">
             <div className="flex items-center justify-between px-8">
               <button className="px-3 py-3 text-sm text-gray-500 hover:text-gray-700">
@@ -102,7 +100,6 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
             </div>
           </div>
 
-          {/* Right Arrow - Outside the navigation container */}
           <button className="p-2">
             <img
               src={ChevronRight}
@@ -124,7 +121,6 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
           </div>
         </div>
 
-        {/* Document Versions List */}
         <div className="flex-1 overflow-auto">
           {versions.map((item, index) => (
             <div
@@ -134,15 +130,22 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
               }`}
             >
               <div className="flex justify-between">
-                {/* Left side content */}
                 <div className="flex gap-3 flex-1">
-                  <img
-                    src={Word}
-                    alt="Word document"
-                    className="w-5 h-5 mt-1"
-                  />
+                  <div className="flex flex-col gap-16">
+                    <img
+                      src={item.isCurrent ? Word : Profile}
+                      alt={item.isCurrent ? "Word document" : "Profile"}
+                      className={`w-7 h-7 mt-1 ${
+                        item.isCurrent ? "word-icon" : ""
+                      }`}
+                    />
+                    <img
+                      src={NoteSticky}
+                      alt="Note"
+                      className="w-4 h-4 ml-2 note-icon"
+                    />
+                  </div>
                   <div className="flex-1 min-w-0">
-                    {/* Version number and type */}
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-sm">
                         V.{item.version}
@@ -152,18 +155,19 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
                           (Current Version)
                         </span>
                       )}
-                      <span className="text-xs text-gray-400">Doc Type</span>
+                      {item.docType && (
+                        <span className="text-xs text-gray-400">
+                          {item.docType}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Author info */}
-                    <div className="flex items-center gap-2 mt-1">
-                      <img src={Profile} alt="User" className="w-4 h-4" />
+                    <div className="flex items-center  mt-1">
                       <span className="text-sm text-gray-600">
                         {item.author}
                       </span>
                     </div>
 
-                    {/* Last update info */}
                     <div className="mt-1">
                       <div className="text-xs text-gray-400">
                         Last Update:{" "}
@@ -174,30 +178,41 @@ const DocumentDetails = ({ isOpen, onClose, status }) => {
                       </div>
                     </div>
 
-                    {/* Note section */}
                     <div className="mt-2">
                       <span className="text-sm font-medium">Not:</span>
-                      <p className="text-sm text-gray-600 mt-1 pr-4">
-                        {item.note}
-                      </p>
+                      <p className="text-sm text-gray-600 pr-4">{item.note}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Right side with size and menu */}
-                <div className="flex flex-col justify-between items-end ml-4 h-full">
-                  <button className="p-1 hover:bg-gray-100 rounded">
-                    <img
-                      src={Ellipsis}
-                      alt="More options"
-                      className="w-4 h-4"
-                    />
-                  </button>
-                  <div className="flex items-center gap-2">
+                {item.isCurrent ? (
+                  <div className="flex flex-col justify-between items-end">
+                    <button className="hover:bg-gray-100 rounded p-1">
+                      <img
+                        src={Ellipsis}
+                        alt="More options"
+                        className="w-4 h-4"
+                      />
+                    </button>
                     <span className="text-sm text-gray-400">{item.size}</span>
-                    <img src={Word} alt="Word document" className="w-4 h-4" />
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-start gap-2 mt-1">
+                    <span className="text-sm text-gray-400">{item.size}</span>
+                    <img
+                      src={Word}
+                      alt="Word document"
+                      className="w-5 h-5 word-icon"
+                    />
+                    <button className="hover:bg-gray-100 rounded p-1">
+                      <img
+                        src={Ellipsis}
+                        alt="More options"
+                        className="w-4 h-4"
+                      />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}

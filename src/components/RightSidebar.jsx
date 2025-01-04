@@ -39,6 +39,10 @@ const RightSidebar = () => {
           <div
             className={`p-2 cursor-pointer hover:bg-gray-100 rounded w-14 flex flex-col items-center ${
               index !== actions.length - 1 ? "mb-5" : ""
+            }  ${
+              action.label === "Contents"
+                ? "bg-[#e8f4ff]"
+                : "hover:bg-[#e8f4ff]"
             }`}
           >
             <div className="w-5 h-5 flex items-center justify-center">

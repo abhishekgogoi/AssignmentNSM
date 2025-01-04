@@ -9,6 +9,41 @@
 }
 
 .group-custom-color {
-  filter: invert(94%) sepia(7%) saturate(300%) hue-rotate(210deg)
-    brightness(105%) contrast(92%);
+  filter: invert(92%) sepia(7%) saturate(270%) hue-rotate(186deg)
+    brightness(96%) contrast(89%);
+}
+
+.blue-ribbon-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.blue-ribbon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 20px;
+  background-color: #8fc9ff;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.word-icon {
+  filter: invert(24%) sepia(97%) saturate(1699%) hue-rotate(199deg)
+    brightness(97%) contrast(101%);
+}
+
+.note-icon {
+  filter: invert(39%) sepia(98%) saturate(3730%) hue-rotate(197deg)
+    brightness(102%) contrast(101%);
+}
+
+.exclamation-icon {
+  filter: invert(86%) sepia(11%) saturate(249%) hue-rotate(181deg)
+    brightness(90%) contrast(87%);
+}
+
+.plus-icon {
+  filter: invert(86%) sepia(11%) saturate(249%) hue-rotate(181deg)
+    brightness(90%) contrast(87%);
 }

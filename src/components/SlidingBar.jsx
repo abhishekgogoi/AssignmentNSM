@@ -99,7 +99,7 @@ const SlidingBar = ({ isOpen }) => {
               <img
                 src={Exclamation}
                 alt="Info"
-                className="w-4 h-4 ml-auto opacity-70"
+                className="w-4 h-4 ml-auto exclamation-icon"
               />
             </div>
 
@@ -119,20 +119,22 @@ const SlidingBar = ({ isOpen }) => {
                       <img
                         src={substage.type === "word" ? Word : Folder}
                         alt={substage.type}
-                        className="w-4 h-4 mr-2"
+                        className={`w-6 h-6 mr-2 ${
+                          substage.type === "word" ? "word-icon" : ""
+                        }`}
                       />
                       <span className="text-sm">{substage.name}</span>
                       <div className="ml-auto flex items-center space-x-2">
                         <img
                           src={Exclamation}
                           alt="Info"
-                          className="w-4 h-4 opacity-70"
+                          className="w-4 h-4 exclamation-icon"
                         />
                         {substage.type === "word" && (
                           <img
                             src={Plus}
                             alt="Add"
-                            className="w-4 h-4 opacity-70"
+                            className="w-4 h-4 plus-icon"
                           />
                         )}
                       </div>

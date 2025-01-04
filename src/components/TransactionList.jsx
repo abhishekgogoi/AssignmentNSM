@@ -183,11 +183,10 @@ const TransactionList = () => {
             >
               <div
                 className={`grid grid-cols-6 px-6 py-4 text-sm relative ${
-                  item.hasBlueIndicator
-                    ? "before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-blue-500"
-                    : ""
+                  item.document !== "-" ? "blue-ribbon-container" : ""
                 }`}
               >
+                {item.document !== "-" && <div className="blue-ribbon"></div>}
                 <div className="flex items-center gap-3">
                   <button
                     data-testid={`expand-button-${item.id}`}
