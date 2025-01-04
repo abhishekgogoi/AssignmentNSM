@@ -88,7 +88,7 @@ npm install <package-name>
 
 ### Development Dependencies
 
-```bash
+```
 npm install -D <package-name>
 ```
 
