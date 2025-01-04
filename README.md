@@ -78,33 +78,6 @@ Runs tests with coverage report.
 This project uses TailwindCSS for styling. The configuration can be found in `tailwind.config.js`.
 ```
 
-## 📁 Project Structure
-
-```
-project-root/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── context/
-│   ├── assets/
-│   ├── App.css
-│   ├── index.css
-│   ├── __tests__/
-│   ├── App.jsx
-│   └── main.jsx
-│   └── setupTests.js
-├── public/
-├── index.html
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-├── jest.config.cjs
-└── postcss.config.js
-└── .babelrc
-└── eslint.config.js
-└── .gitignore
-```
-
 ## 🔧 Additional Configuration
 
 ### Installing New Dependencies
