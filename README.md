@@ -1,9 +1,7 @@
 # Vite React Project
-
 This project is built with Vite, React, TailwindCSS, and Jest for testing.
 
 ## 🚀 Features
-
 - ⚡️ Fast development with Vite
 - 🎨 TailwindCSS for styling
 - ✅ Jest configuration for testing
@@ -11,17 +9,15 @@ This project is built with Vite, React, TailwindCSS, and Jest for testing.
 - 🧪 Testing utilities preconfigured
 
 ## 📦 Prerequisites
-
 Before you begin, ensure you have the following installed:
 - Node.js (version 16.x or higher)
 - npm (version 8.x or higher)
 
 ## 🛠️ Installation
-
 1. Clone the repository:
 ```bash
 git clone https://github.com/abhishekgogoi/AssignmentNSM
-cd <project-directory>
+cd AssignmentNSM
 ```
 
 2. Install dependencies:
@@ -30,9 +26,7 @@ npm install
 ```
 
 ## 🔧 Configuration Files
-
 The project includes several configuration files:
-
 - `vite.config.js` - Vite configuration
 - `tailwind.config.js` - TailwindCSS configuration
 - `jest.config.js` - Jest configuration
@@ -40,7 +34,6 @@ The project includes several configuration files:
 - `.babelrc` - Transpiling JSX in test files
 
 ## 📝 Available Scripts
-
 In the project directory, you can run:
 
 ### Development
@@ -74,30 +67,24 @@ npm run test:coverage
 Runs tests with coverage report.
 
 ## 🎨 TailwindCSS
-
 This project uses TailwindCSS for styling. The configuration can be found in `tailwind.config.js`.
-```
 
 ## 🔧 Additional Configuration
 
 ### Installing New Dependencies
-
 ```bash
 npm install <package-name>
 ```
 
 ### Development Dependencies
-
-```
+```bash
 npm install -D <package-name>
 ```
 
 ## 📄 License
-
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
-
 - Vite
 - React
 - TailwindCSS
@@ -106,6 +93,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - All other open-source contributors
 
 ## 📫 Contact
-
-Your Name - Abhishek Gogoi
+Your Name - Abhishek Gogoi\
 Project Link: [https://github.com/abhishekgogoi/AssignmentNSM](https://github.com/abhishekgogoi/AssignmentNSM)
