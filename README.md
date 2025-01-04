@@ -17,7 +17,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 ```bash
 git clone https://github.com/abhishekgogoi/AssignmentNSM
-cd AssignmentNSM
+cd <projectDirectory>
 ```
 
 2. Install dependencies:
