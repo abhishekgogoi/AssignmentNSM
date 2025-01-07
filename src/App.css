@@ -53,3 +53,25 @@
   filter: invert(86%) sepia(11%) saturate(249%) hue-rotate(181deg)
     brightness(90%) contrast(87%);
 }
+
+.microphone-icon:hover {
+  filter: invert(48%) sepia(99%) saturate(1843%) hue-rotate(190deg) brightness(100%) contrast(103%);
+}
+
+.microphone-active {
+  filter: invert(48%) sepia(99%) saturate(1843%) hue-rotate(190deg) brightness(100%) contrast(103%) !important;
+}
+
+
+
+/*.number-phase-container {*/
+/*  display: flex;*/
+/*  gap: 1rem;*/
+/*  grid-column: span 2;*/
+/*}*/
+
+/*.number-cell {*/
+/*  width: 48px;*/
+/*  padding-left: 2rem;*/
+/*}*/
+

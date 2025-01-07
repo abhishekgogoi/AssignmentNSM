@@ -25,8 +25,39 @@ const TransactionList = () => {
     dateRange: null,
   });
   const [searchTerm, setSearchTerm] = useState("");
+  const [isListening, setIsListening] = useState(false);
 
   const { transactions } = transactionsData;
+
+  const startSpeechRecognition = () => {
+    if ('webkitSpeechRecognition' in window) {
+      const recognition = new window.webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onstart = () => {
+        setIsListening(true);
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setSearchTerm(transcript);
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognition.start();
+    } else {
+      alert('Speech recognition is not supported in this browser.');
+    }
+  };
 
   const handleDocumentClick = (status) => {
     setIsDocumentDetailsOpen(true);
@@ -88,23 +119,26 @@ const TransactionList = () => {
             {" "}
             <div className="relative w-full">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                <Search size={18} />
+                <Search size={18}/>
               </div>
               <input
-                data-testid="search-input"
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search within all folders and content, or a specific folder's content"
-                className="w-full bg-transparent border-none outline-none pl-10 pr-10 text-sm placeholder-gray-500"
+                  data-testid="search-input"
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search within all folders and content, or a specific folder's content"
+                  className="w-full bg-transparent border-none outline-none pl-10 pr-10 text-sm placeholder-gray-500"
               />
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <button
+                  onClick={startSpeechRecognition}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2"
+              >
                 <img
-                  src={Microphone}
-                  alt="Voice Search"
-                  className="w-4 h-4 text-gray-400 cursor-pointer"
+                    src={Microphone}
+                    alt="Voice Search"
+                    className={`w-4 h-4 cursor-pointer microphone-icon ${isListening ? 'microphone-active' : ''}`}
                 />
-              </div>
+              </button>
             </div>
           </div>
         </div>
@@ -112,9 +146,9 @@ const TransactionList = () => {
         <div className="flex items-center gap-3 min-w-fit">
           <div className="relative bg-white rounded-lg shadow">
             <select
-              data-testid="status-select"
-              className="appearance-none h-10 pl-4 pr-10 w-48 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-              defaultValue="All Status"
+                data-testid="status-select"
+                className="appearance-none h-10 pl-4 pr-10 w-48 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                defaultValue="All Status"
             >
               <option>All Status</option>
             </select>
@@ -142,11 +176,11 @@ const TransactionList = () => {
       </div>
 
       <div className="grid grid-cols-6 px-6 py-3 font-semibold text-base">
-        <div className="flex items-center gap-1 text-gray-600">
+        <div className="flex items-center gap-1 text-gray-600 ml-2">
           <span>#</span>
         </div>
 
-        <div className="flex items-center gap-1 text-black">
+        <div className="flex items-center gap-1 text-black mr-[20rem]">
           <span>Phase</span>
           <img src={CaretDown} alt="Sort" className="w-2 h-2 opacity-50" />
         </div>
