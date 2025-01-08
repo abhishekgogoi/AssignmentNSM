@@ -29,7 +29,7 @@
   position: absolute;
   top: -12px;
   left: -6px;
-  width: 8px;  /* Make it wider */
+  width: 8px;
   height: 120%;
   background-color: #8fc9ff;
   transform: rotate(40deg);
@@ -56,23 +56,25 @@
 }
 
 .microphone-icon:hover {
-  filter: invert(48%) sepia(99%) saturate(1843%) hue-rotate(190deg) brightness(100%) contrast(103%);
+  filter: invert(48%) sepia(99%) saturate(1843%) hue-rotate(190deg)
+    brightness(100%) contrast(103%);
 }
 
 .microphone-active {
-  filter: invert(48%) sepia(99%) saturate(1843%) hue-rotate(190deg) brightness(100%) contrast(103%) !important;
+  filter: invert(48%) sepia(99%) saturate(1843%) hue-rotate(190deg)
+    brightness(100%) contrast(103%) !important;
 }
 
+.transaction-grid {
+  display: grid;
+  grid-template-columns: 60px 1fr repeat(4, minmax(0, 0.6fr));
+  gap: 1rem;
+  align-items: center;
+}
 
-
-/*.number-phase-container {*/
-/*  display: flex;*/
-/*  gap: 1rem;*/
-/*  grid-column: span 2;*/
-/*}*/
-
-/*.number-cell {*/
-/*  width: 48px;*/
-/*  padding-left: 2rem;*/
-/*}*/
-
+.transaction-header {
+  display: grid;
+  grid-template-columns: 60px 1fr repeat(4, minmax(0, 0.6fr));
+  gap: 1rem;
+  align-items: center;
+}
