@@ -12,6 +12,7 @@ const FilterModel = ({ isOpen, onClose, onApply, onClear }) => {
   if (!isOpen) return null;
 
   const handleApply = () => {
+    console.log('Selected stage status:', stageStatus); // Add this for debugging
     onApply({ stageStatus, dateRange });
     onClose();
   };

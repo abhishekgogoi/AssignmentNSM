@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DocumentDetails from "./DocumentDetails";
 import FilterModel from "./FilterModel";
 import ChevronDown from "../assets/chevron-down.svg";
@@ -11,7 +11,6 @@ import CaretDown from "../assets/caret-down.svg";
 import Group from "../assets/Group 193539.svg";
 import Group1 from "../assets/Group 193548.svg";
 import ChevronRight from "../assets/chevron-right.svg";
-import transactionsData from "../data/transactions.json";
 import { useTransaction } from "../context/TransactionContext";
 import "../App.css";
 
@@ -26,8 +25,57 @@ const TransactionList = () => {
   });
   const [searchTerm, setSearchTerm] = useState("");
   const [isListening, setIsListening] = useState(false);
+  const [transactions, setTransactions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { transactions } = transactionsData;
+  //Fetch transactions from backend
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('http://localhost:5000/api/transactions/list');
+        const data = await response.json();
+        setTransactions(data.transactions);
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+
+  //Search functionality
+  useEffect(() => {
+    const searchTransactions = async () => {
+      if (!searchTerm) {
+        const response = await fetch('http://localhost:5000/api/transactions/list');
+        const data = await response.json();
+        setTransactions(data.transactions);
+        return;
+      }
+
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+            `http://localhost:5000/api/transactions/search?search=${encodeURIComponent(searchTerm)}`
+        );
+        const data = await response.json();
+        setTransactions(data.transactions);
+      } catch (error) {
+        console.error('Error searching transactions:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    const timeoutId = setTimeout(() => {
+      searchTransactions();
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm]);
 
   const startSpeechRecognition = () => {
     if ('webkitSpeechRecognition' in window) {
@@ -64,40 +112,51 @@ const TransactionList = () => {
     setSelectedDocStatus(status);
   };
 
-  const handleFilterApply = (filters) => {
-    setActiveFilter({
-      stageStatus: filters.stageStatus,
-      dateRange: filters.dateRange,
-    });
-    setIsFilterModalOpen(false);
+
+  const handleFilterApply = async (filters) => {
+    try {
+      setIsLoading(true);
+      const params = new URLSearchParams();
+      if (filters.stageStatus) {
+        params.append('stageStatus', filters.stageStatus);
+      }
+      if (filters.dateRange?.startDate) {
+        params.append('startDate', filters.dateRange.startDate.toISOString());
+      }
+      if (filters.dateRange?.endDate) {
+        params.append('endDate', filters.dateRange.endDate.toISOString());
+      }
+
+      const url = `http://localhost:5000/api/transactions/filter?${params.toString()}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setTransactions(data.transactions);
+      setActiveFilter(filters);
+      setIsFilterModalOpen(false);
+    } catch (error) {
+      console.error('Error applying filters:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleFilterClear = () => {
-    setActiveFilter({ stageStatus: null, dateRange: null });
+  const handleFilterClear = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('http://localhost:5000/api/transactions/list');
+      const data = await response.json();
+      setTransactions(data.transactions);
+      setActiveFilter({ stageStatus: null, dateRange: null });
+    } catch (error) {
+      console.error('Error clearing filters:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
-
-  const isDateInRange = (date, range) => {
-    if (!range || !range.startDate || !range.endDate) return true;
-
-    const transactionDate = new Date(date.split(".").reverse().join("-"));
-    return (
-      transactionDate >= range.startDate && transactionDate <= range.endDate
-    );
-  };
-
-  const filteredTransactions = transactions.filter((transaction) => {
-    const statusMatch =
-      !activeFilter.stageStatus ||
-      transaction.status === activeFilter.stageStatus;
-
-    const dateMatch = isDateInRange(transaction.date, activeFilter.dateRange);
-
-    return statusMatch && dateMatch;
-  });
 
   const searchedTransactions = !searchTerm
-    ? filteredTransactions
-    : filteredTransactions.filter((transaction) =>
+    ? transactions
+    : transactions.filter((transaction) =>
         transaction.phase.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
@@ -206,6 +265,9 @@ const TransactionList = () => {
         </div>
       </div>
 
+      {isLoading ? (
+          <div className="text-center py-8 text-gray-500">Loading...</div>
+      ) : (
       <div className="flex-1 pb-4 space-y-2">
         {searchedTransactions.length > 0 ? (
           searchedTransactions.map((item) => (
@@ -382,6 +444,7 @@ const TransactionList = () => {
           </div>
         )}
       </div>
+      )}
 
       <DocumentDetails
         isOpen={isDocumentDetailsOpen}
